@@ -66,7 +66,7 @@ export default function ProjectSidebar({
         ))}
       </nav>
 
-      <form onSubmit={handleSubmit} className="p-3 border-t border-gray-800 flex flex-col gap-2">
+      <form onSubmit={handleSubmit} className="p-3 border-t border-gray-800">
         <input
           type="text"
           value={name}
