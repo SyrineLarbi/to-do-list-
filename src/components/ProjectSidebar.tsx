@@ -71,15 +71,9 @@ export default function ProjectSidebar({
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="New project..."
+          placeholder="New project name + Enter"
           className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
         />
-        <button
-          type="submit"
-          className="w-full px-3 py-2 bg-orange-500 text-white rounded-lg text-sm font-medium hover:bg-orange-600 cursor-pointer"
-        >
-          + Create Project
-        </button>
       </form>
     </aside>
   );
