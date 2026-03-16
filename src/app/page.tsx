@@ -103,7 +103,7 @@ export default function Home() {
         ) : (
           <div className="flex flex-col items-center justify-center h-full text-gray-500 gap-2">
             <p className="text-xl">No project selected</p>
-            <p className="text-sm">Type a name in the sidebar and click <strong className="text-orange-400">&quot;+ Create Project&quot;</strong> to get started</p>
+            <p className="text-sm">Type a project name in the sidebar and press <strong className="text-orange-400">Enter</strong> to get started</p>
           </div>
         )}
       </main>
