@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "To-Do List",
   description: "Per-project reading tracker",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
