@@ -2,7 +2,7 @@
 
 A simple per-project reading tracker to manage files and tasks you need to read. Dark theme with orange accents.
 
-**Live demo:** [YOUR_VERCEL_URL_HERE]
+**Live demo:** [https://to-do-list-theta-seven-74.vercel.app/]
 
 ## Features
 
