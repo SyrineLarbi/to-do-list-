@@ -54,6 +54,16 @@ export default function ProjectSidebar({
         </button>
       </div>
 
+      <form onSubmit={handleSubmit} className="p-3 border-b border-gray-800">
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="New project name + Enter"
+          className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+        />
+      </form>
+
       <nav className="flex-1 overflow-y-auto p-2">
         {projects.length === 0 && (
           <p className="text-gray-600 text-sm p-2 italic">No projects yet</p>
@@ -85,16 +95,6 @@ export default function ProjectSidebar({
           </div>
         ))}
       </nav>
-
-      <form onSubmit={handleSubmit} className="p-3 border-t border-gray-800">
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="New project name + Enter"
-          className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-        />
-      </form>
     </aside>
   );
 }
