@@ -20,7 +20,7 @@ export default function TaskItem({ task, onUpdateStatus, onDelete }: TaskItemPro
     <div className={`flex flex-col sm:flex-row sm:items-center justify-between p-3 gap-2 rounded-lg border border-gray-700 bg-gray-800/50 ${task.status === "done" ? "opacity-50" : ""}`}>
       <div className="flex items-center gap-3 min-w-0">
         <StatusBadge status={task.status} />
-        <span className={`truncate ${task.status === "done" ? "line-through text-gray-500" : "text-gray-200"}`}>
+        <span className={`break-words ${task.status === "done" ? "line-through text-gray-500" : "text-gray-200"}`}>
           {task.title}
         </span>
       </div>
