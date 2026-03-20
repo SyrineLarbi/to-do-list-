@@ -15,7 +15,7 @@ export default function TaskList({ project, onAddTask, onUpdateTaskStatus, onDel
 
   return (
     <div className="max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold text-orange-400 mb-6">{project.name}</h1>
+      <h1 className="text-xl md:text-2xl font-bold text-orange-400 mb-4 md:mb-6 pt-10 md:pt-0">{project.name}</h1>
 
       <NewTaskForm onAdd={onAddTask} />
 
