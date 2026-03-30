@@ -13,16 +13,47 @@ const actionConfig: Record<TaskStatus, { label: string; next: TaskStatus; classe
   done: { label: "Reopen", next: "not-started", classes: "bg-gray-600 hover:bg-gray-500 text-white" },
 };
 
+function formatDuration(ms: number): string {
+  const seconds = Math.floor(ms / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+
+  if (days > 0) return `${days}d ${hours % 24}h`;
+  if (hours > 0) return `${hours}h ${minutes % 60}m`;
+  if (minutes > 0) return `${minutes}m`;
+  return "< 1m";
+}
+
+function getTimeLabel(task: Task): string | null {
+  const now = Date.now();
+  if (task.status === "in-progress" && task.startedAt) {
+    return `Started ${formatDuration(now - task.startedAt)} ago`;
+  }
+  if (task.status === "done" && task.startedAt && task.doneAt) {
+    return `Finished in ${formatDuration(task.doneAt - task.startedAt)}`;
+  }
+  return null;
+}
+
 export default function TaskItem({ task, onUpdateStatus, onDelete }: TaskItemProps) {
   const action = actionConfig[task.status];
+  const timeLabel = getTimeLabel(task);
 
   return (
     <div className={`flex flex-col sm:flex-row sm:items-center justify-between p-3 gap-2 rounded-lg border border-gray-700 bg-gray-800/50 ${task.status === "done" ? "opacity-50" : ""}`}>
-      <div className="flex items-center gap-3 min-w-0">
-        <StatusBadge status={task.status} />
-        <span className={`break-words ${task.status === "done" ? "line-through text-gray-500" : "text-gray-200"}`}>
-          {task.title}
-        </span>
+      <div className="flex flex-col gap-1 min-w-0">
+        <div className="flex items-center gap-3">
+          <StatusBadge status={task.status} />
+          <span className={`break-words ${task.status === "done" ? "line-through text-gray-500" : "text-gray-200"}`}>
+            {task.title}
+          </span>
+        </div>
+        {timeLabel && (
+          <span className={`text-xs ml-[calc(0.75rem+2.5rem)] sm:ml-[calc(0.75rem+4rem)] ${task.status === "done" ? "text-green-500/70" : "text-orange-400/70"}`}>
+            {timeLabel}
+          </span>
+        )}
       </div>
       <div className="flex items-center gap-2 shrink-0 pl-9 sm:pl-0 sm:ml-3">
         <button
