@@ -5,6 +5,8 @@ export interface Task {
   title: string;
   status: TaskStatus;
   createdAt: number;
+  startedAt?: number;
+  doneAt?: number;
 }
 
 export interface Project {
