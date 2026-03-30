@@ -62,9 +62,21 @@ export default function Home() {
 
   function handleUpdateTaskStatus(taskId: string, status: TaskStatus) {
     if (!activeProjectId) return;
+    const now = Date.now();
     const updated = projects.map((p) =>
       p.id === activeProjectId
-        ? { ...p, tasks: p.tasks.map((t) => (t.id === taskId ? { ...t, status } : t)) }
+        ? {
+            ...p,
+            tasks: p.tasks.map((t) => {
+              if (t.id !== taskId) return t;
+              return {
+                ...t,
+                status,
+                startedAt: status === "in-progress" ? now : t.startedAt,
+                doneAt: status === "done" ? now : undefined,
+              };
+            }),
+          }
         : p
     );
     persist(updated);
